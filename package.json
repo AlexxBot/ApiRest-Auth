@@ -4,11 +4,10 @@
   "version": "1.0.0",
   "description": "Api rest auth",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "startDist": "node dist/index.js",
-    "start": "node src/index.js",
+    "start": "npm run build && node dist/index.js",
     "dev2": "babel-node src/index.js",
     "build": "babel src --out-dir dist",
     "dev": "nodemon --exec babel-node src/index.js"
