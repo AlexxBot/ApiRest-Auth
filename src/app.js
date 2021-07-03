@@ -13,7 +13,7 @@ const app = express();
 
 createRoles();
 
-app.set('port', 3000);
+app.set('port', process.env.PORT || 3000);
 app.set('pkg', moduleName);
 
 //esto es para que entiendo los datos en formato json
