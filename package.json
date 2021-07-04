@@ -1,5 +1,4 @@
 {
-  
   "name": "ApiRestAuth",
   "version": "1.0.0",
   "description": "Api rest auth",
@@ -19,6 +18,7 @@
     "@babel/plugin-transform-runtime": "^7.14.3",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",

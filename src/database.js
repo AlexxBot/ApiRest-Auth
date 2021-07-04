@@ -1,8 +1,11 @@
 import mongoose from 'mongoose';
+import env from 'dotenv'
+
+env.config()//para recuperar las configuraciones
 
 //mongoose.connect("mongodb://mongo/companydb", {
 //mongoose.connect("mongodb://localhost/companydb", {
-    mongoose.connect("mongodb+srv://AlexxBot:Dotacinema2@cluster0.5my0n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+    mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/companydb", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: true,
