@@ -12,11 +12,6 @@ import cors from 'cors'
 
 const app = express();
 
-//para los sockets
-const http = require("http")
-const server = http.createServer(app)
-//
-
 createRoles();
 
 app.set('port', process.env.PORT || 3000);
@@ -52,22 +47,13 @@ app.use(cors(corsOptions))
 app.use('/products', productsRoutes/* require('./routes/products.routes') */);
 app.use('/auth', authRoutes );
 
-//sockets
-const io = require('socket.io')(server, {
-    cors: {
-        origin: '*',
-        methods: ['GET', 'POST']
-    }
-})
-
-io.on('connection', (socket) => {
-    socket.emit("sendId", socket.id)
-})
 
 
-/*module.exports = {
-    app: app
-}*/
+/* module.exports = {
+    app: app,
+    server: server
+} */
 export default app;
+
 
 
