@@ -1,5 +1,5 @@
 //const express = require("express");
-import express, { json } from 'express';
+import express from 'express';
 import morgan from 'morgan';
 import moduleName from '../package.json'
 
@@ -8,8 +8,14 @@ import authRoutes from './routes/auth.routes';
 import { createRoles } from './libs/initialSetUp';
 
 import cors from 'cors'
+//import { ieNoOpen } from 'helmet';
 
 const app = express();
+
+//para los sockets
+const http = require("http")
+const server = http.createServer(app)
+//
 
 createRoles();
 
@@ -43,21 +49,20 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-/* app.use((req, res, next) =>
-{
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header("Access-Control-Allow-Credentials" , true );
-    res.header("Content-Type", "application/json");
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-}) */
-
-
 app.use('/products', productsRoutes/* require('./routes/products.routes') */);
 app.use('/auth', authRoutes );
 
+//sockets
+const io = require('socket.io')(server, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST']
+    }
+})
 
-
+io.on('connection', (socket) => {
+    socket.emit("sendId", socket.id)
+})
 
 
 /*module.exports = {
