@@ -1,4 +1,7 @@
 import app from './app'
+
+import './mercado-pago'
+
 const http = require("http")
 const server = http.createServer(app)
 //
