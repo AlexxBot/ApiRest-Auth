@@ -7,4 +7,4 @@ import {authJwt} from '../middlewares'
 router.post('/', [authJwt.verifyToken, authJwt.isAdmin] ,userController.createUser);
 
 
-export default Router;
+export default router;
