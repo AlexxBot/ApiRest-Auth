@@ -71,7 +71,7 @@ app.post('/suscription', (req, res) => {
     res.status(200).json({texto: 'suscrito'})
 }) */
 
-import { sendPushToOneUser, sendPushToTopic } from './notification';
+/* import { sendPushToOneUser, sendPushToTopic } from './notification';
 
 
 app.get("/one-user", (req, res) => {
@@ -95,7 +95,7 @@ app.get("/topic", (req, res) => {
 
     sendPushToTopic(data)
 })
-
+ */
 
 
 
