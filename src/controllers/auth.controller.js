@@ -5,6 +5,7 @@ import role from '../models/role';
 import { json } from 'express';
 
 export const signUp = async (req, res) => {
+
     const { username, email, password, roles } = req.body;
     //console.log(req.body);
 
@@ -51,4 +52,14 @@ export const signIn = async (req, res) => {
 
     console.log(userFound)
     res.json({ token })
+}
+
+export const setUserName = async (req, res) => {
+
+    const updatedUser = await user.findOneAndUpdate({email: req.body.email}, {$set:{ username: req.body.username }}, 
+    {
+        select: "email username",
+        new: true// esto es para obtner los nuevos datos actulaizados, si esta en falso te delvuelve el anterior
+    })
+    res.status(200).json(updatedUser);
 }
