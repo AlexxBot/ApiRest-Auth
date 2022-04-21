@@ -10,6 +10,10 @@ import { createRoles } from './libs/initialSetUp';
 import cors from 'cors'
 //import { ieNoOpen } from 'helmet';
 
+import env from 'dotenv'//it should be setted in a config file which must be declare al the .env variables
+
+env.config()
+
 const app = express();
 
 createRoles();

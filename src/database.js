@@ -5,7 +5,7 @@ env.config()//para recuperar las configuraciones
 
 //mongoose.connect("mongodb://mongo/companydb", {
 //mongoose.connect("mongodb://localhost/companydb", {
-    mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/companydb", {
+    mongoose.connect(/* process.env.MONGODB_URI ||  */"mongodb://localhost/companydb", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: true,
