@@ -1,11 +1,11 @@
-import product  from '../models/product';
+import product from '../models/product';
 
 export const createProduct = async (req, res) => {
     //console.dir(req.body)
     //objeto = req.body;
     const { name, category, price, imgURL } = req.body;
     //const newProduct = new product({name: name, category: category, price: price, imgURL: imgURL});
-    const newProduct = new product({name, category, price, imgURL});
+    const newProduct = new product({ name, category, price, imgURL });
     const productSaved = await newProduct.save();
     res.status(201).json(productSaved);
     //res.json(req.body)
@@ -23,11 +23,11 @@ export const getProductById = async (req, res) => {
 };
 
 export const updateProductById = async (req, res) => {
-const updatedProduct = await product.findByIdAndUpdate(req.params.productId, req.body, 
-{
-    new: true// esto es para obtner los nuevos datos actulaizados, si esta en falso te delvuelve el anterior
-})
-res.status(200).json(updatedProduct);
+    const updatedProduct = await product.findByIdAndUpdate(req.params.productId, req.body,
+        {
+            new: true// esto es para obtner los nuevos datos actulaizados, si esta en falso te delvuelve el anterior
+        })
+    res.status(200).json(updatedProduct);
 };
 
 export const deleteProductById = async (req, res) => {
